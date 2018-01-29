@@ -8,14 +8,25 @@
   "boot": "auto",
   "audio": true,
   "options": {
-    "spotify_user": "username_or_email",
-    "spotify_password": "password",
-    "speaker": "hw:0,1"
+    "instances": [
+      {
+        "discovery_mode": false,
+        "spotify_user": "username_or_email",
+        "spotify_password": "password",
+        "device_name": "Home Assistant"
+      }
+    ]
   },
   "schema": {
-    "spotify_user": "str",
-    "spotify_password": "str",
-    "speaker": "str"
+    "instances": [
+      {
+        "discovery_mode": "bool",
+        "spotify_user": "str?",
+        "spotify_password": "str?",
+        "device_name": "str",
+        "speaker": "str?"
+      }
+    ]
   },
   "host_network": true
 }
