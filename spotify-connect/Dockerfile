@@ -7,8 +7,7 @@ ENV LANG C.UTF-8
 
 # Setup base
 RUN apt-get update
-RUN apt-get install -y jq
-RUN apt-get install -y sox
+RUN apt-get install -y jq sox
 RUN apt-get install -y alsa-utils
 
 # Install raspotify (librespot wrapper)
