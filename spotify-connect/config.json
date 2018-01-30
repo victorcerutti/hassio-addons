@@ -1,6 +1,6 @@
 {
   "name": "Spotify connect",
-  "version": "0.1",
+  "version": "0.5",
   "slug": "spotify_connect",
   "description": "Allow device to be discovered by Spotify and play music via Spotify Connect",
   "arch":["armhf"],
