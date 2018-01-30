@@ -1,6 +1,6 @@
 {
   "name": "Spotify connect",
-  "version": "0.1",
+  "version": "0.5",
   "slug": "spotify_connect",
   "description": "Allow device to be discovered by Spotify and play music via Spotify Connect",
   "arch":["armhf"],
@@ -8,14 +8,27 @@
   "boot": "auto",
   "audio": true,
   "options": {
-    "spotify_user": "username_or_email",
-    "spotify_password": "password",
-    "speaker": "hw:0,1"
+    "instances": [
+      {
+        "device_name": "Home assistant",
+        "spotify_user": "username_or_email",
+        "spotify_password": "password"
+      }
+    ]
   },
   "schema": {
-    "spotify_user": "str",
-    "spotify_password": "str",
-    "speaker": "str"
+    "instances": [
+      {
+        "device_name": "str",
+        "spotify_user": "str?",
+        "spotify_password": "str?",
+        "speaker": "str?",
+        "bitrate": "match(96|160|320)?",
+        "allow_guests": "bool?",
+        "initial_volume": "int(0,100)?",
+        "device_type": "match(computer|tablet|smartphone|speaker|tv|avr|stb|audiodongle)?"
+      }
+    ]
   },
   "host_network": true
 }
