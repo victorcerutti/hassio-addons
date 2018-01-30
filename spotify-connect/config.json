@@ -10,21 +10,23 @@
   "options": {
     "instances": [
       {
-        "discovery_mode": false,
+        "device_name": "Home assistant",
         "spotify_user": "username_or_email",
-        "spotify_password": "password",
-        "device_name": "Home Assistant"
+        "spotify_password": "password"
       }
     ]
   },
   "schema": {
     "instances": [
       {
-        "discovery_mode": "bool",
+        "device_name": "str",
         "spotify_user": "str?",
         "spotify_password": "str?",
-        "device_name": "str",
-        "speaker": "str?"
+        "speaker": "str?",
+        "bitrate": "match(96|160|320)?",
+        "allow_guests": "bool?",
+        "initial_volume": "int(0,100)?",
+        "device_type": "match(computer|tablet|smartphone|speaker|tv|avr|stb|audiodongle)?"
       }
     ]
   },

@@ -7,24 +7,24 @@ When running, you'll be able to connect to it directly from the Spotify App.
 
 This add-on can run several instances of Spotify, here is the configuration for each instance :
 
-##### `discovery_mode` (bool)
+##### `device_name` (string)
 
-If set to `true`, Spotify connect will be enable to all device on the same local network.  
-If you have friends at home they will be able to play their music too.
-
-If set to `false`, the addon will use your Spotify username and password to connect.  
-You will also be able to connect and control playback with Spotify without being on the same network.  
-No guests will see the device and won't be able to connect
+This is the name that will be displayed in Spotify.  
+This is the only required configuration option.  
+Default is 'Home Assistant'.
 
 ##### `spotify_user` and `spotify_password` (string)
 
 Your Spotify account informations. `spotify_user` can be either your email or your username.  
-If `discovery_mode` is enabled you don't need to set this values.
+Setting your identifiers is optional.  
+If you don't you won't be able to connect remotely to your instance, only via local network.
 
-##### `device_name` (string)
 
-This is the name that will be displayed in Spotify.  
-Default is 'Home Assistant'
+##### `allow_guets` (bool)
+
+Default is `true`. Spotify connect will be allow discovery to all devices on the same local network. If you have friends at home they will be able to play their music too.  
+If set to `false`, the addon needs your Spotify username and password to connect. The device won't be discoverable on the local network and you will be the only one seeing it.
+
 
 ##### `speaker` (string)
 
@@ -35,23 +35,46 @@ Standard configurations are :
 
 If you have a different configuration or want to use and USB sound card, have a look at the logs to get the correct numbers.
 
+##### `bitrate` (int)
+
+Quality bitrate of songs played. Can be 96, 160 or 320. Defaults to 160.
+
+##### `initial_volume` (int)
+
+Set the initial volume in % once connected. Defaults is 80.
+
 
 ### Complete exemple
 
-This a working configuration example.
+This a the simplest yet working configuration example.  
+One instance will be running, available to everyone on the local network.
 
 ```json
 {
   "instances": [
     {
-      "discovery_mode": true,
       "device_name": "Home assistant"
+    }
+  ]
+}
+```
+
+This is a more complete exemple, having 2 instances running. One is only visible to me and the other is for guests.
+
+```json
+{
+  "instances": [
+    {
+      "device_name": "Home Assistant",
+      "spotify_user": "my_username",
+      "spotify_password": "my_secret_password",
+      "initial_volume": 90,
+      "bitrate": 320,
+      "allow_guests": false
     },
     {
-      "discovery_mode": false,
-      "spotify_user": "my_username",
-      "spotify_password": "secret_password",
-      "device_name": "My music box"
+      "device_name": "Guest music",
+      "initial_volume": 50
     }
   ]
 }
